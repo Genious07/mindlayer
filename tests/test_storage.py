@@ -1,0 +1,67 @@
+import uuid
+from datetime import datetime
+
+import pytest
+
+from memcore.storage.sqlite import SQLiteStorage
+from memcore.storage.base import MemoryEntry
+
+
+@pytest.fixture
+def storage(tmp_path):
+    db = SQLiteStorage(str(tmp_path / "test.db"))
+    yield db
+    db.close()
+
+
+def _entry(content="test fact", layer="working", score=1.0):
+    now = datetime.utcnow()
+    return MemoryEntry(
+        id=str(uuid.uuid4()),
+        content=content,
+        layer=layer,
+        score=score,
+        created_at=now,
+        last_accessed=now,
+        access_count=0,
+        metadata={},
+    )
+
+
+def test_save_and_get(storage):
+    e = _entry("I prefer dark mode")
+    storage.save(e)
+    result = storage.get(e.id)
+    assert result is not None
+    assert result.content == "I prefer dark mode"
+
+
+def test_search(storage):
+    storage.save(_entry("I prefer dark mode"))
+    storage.save(_entry("I work in Berlin"))
+    results = storage.search("dark mode")
+    assert len(results) == 1
+    assert "dark" in results[0].content
+
+
+def test_delete(storage):
+    e = _entry()
+    storage.save(e)
+    storage.delete(e.id)
+    assert storage.get(e.id) is None
+
+
+def test_list_by_layer(storage):
+    storage.save(_entry("a", layer="working"))
+    storage.save(_entry("b", layer="episodic"))
+    working = storage.list_by_layer("working")
+    assert len(working) == 1
+    assert working[0].content == "a"
+
+
+def test_update_score(storage):
+    e = _entry(score=1.0)
+    storage.save(e)
+    storage.update_score(e.id, 0.5)
+    updated = storage.get(e.id)
+    assert updated.score == pytest.approx(0.5)
