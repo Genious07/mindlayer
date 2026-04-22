@@ -1,5 +1,10 @@
 # memcore
 
+[![PyPI version](https://img.shields.io/pypi/v/memcore.svg)](https://pypi.org/project/memcore/)
+[![CI](https://github.com/Genious07/memcore/actions/workflows/ci.yml/badge.svg)](https://github.com/Genious07/memcore/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://pypi.org/project/memcore/)
+
 Open-source, model-agnostic memory layer for LLMs.
 
 Drop memcore into any LLM application to give it persistent, structured memory — no API key required, no infrastructure to run, no vendor lock-in.
