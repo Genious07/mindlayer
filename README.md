@@ -1,9 +1,9 @@
 # memcore
 
-[![PyPI version](https://img.shields.io/pypi/v/memcore.svg)](https://pypi.org/project/memcore/)
+[![PyPI version](https://img.shields.io/pypi/v/memcore-ai.svg)](https://pypi.org/project/memcore-ai/)
 [![CI](https://github.com/Genious07/memcore/actions/workflows/ci.yml/badge.svg)](https://github.com/Genious07/memcore/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://pypi.org/project/memcore/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://pypi.org/project/memcore-ai/)
 
 Open-source, model-agnostic memory layer for LLMs.
 
@@ -36,19 +36,19 @@ memcore is:
 ## Installation
 
 ```bash
-pip install memcore
+pip install memcore-ai
 ```
 
 With semantic vector search (downloads ~130MB embedding model on first use):
 
 ```bash
-pip install "memcore[vector]"
+pip install "memcore-ai[vector]"
 ```
 
 With LLM-powered extraction (downloads Gemma ~800MB on first use):
 
 ```bash
-pip install "memcore[llm]"
+pip install "memcore-ai[llm]"
 ```
 
 ---
@@ -156,7 +156,7 @@ Contributions are welcome. Please open an issue before submitting large PRs.
 ```bash
 git clone https://github.com/Genious07/memcore
 cd memcore
-pip install -e ".[dev]"
+pip install -e ".[dev,vector]"
 pytest
 ```
 
