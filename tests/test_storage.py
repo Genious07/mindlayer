@@ -4,8 +4,8 @@ from datetime import datetime
 
 import pytest
 
-from memvault.storage.sqlite import SQLiteStorage
-from memvault.storage.base import MemoryEntry
+from mindlayer.storage.sqlite import SQLiteStorage
+from mindlayer.storage.base import MemoryEntry
 
 
 def _vec_available() -> bool:

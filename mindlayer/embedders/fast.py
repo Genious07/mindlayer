@@ -17,8 +17,8 @@ class FastEmbedder(BaseEmbedder):
         try:
             from fastembed import TextEmbedding
         except ImportError:
-            raise ImportError("Install fastembed: pip install memvault[vector]")
-        print(f"[memvault] Loading embedding model '{self._model_name}' (one-time download ~130MB)...")
+            raise ImportError("Install fastembed: pip install mindlayer[vector]")
+        print(f"[mindlayer] Loading embedding model '{self._model_name}' (one-time download ~130MB)...")
         self._model = TextEmbedding(model_name=self._model_name)
 
     def embed(self, text: str) -> List[float]:

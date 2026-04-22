@@ -26,4 +26,4 @@ jobs:
           pip install -e ".[dev,vector]"
 
       - name: Run tests
-        run: pytest --cov=memvault --cov-report=term-missing
+        run: pytest --cov=mindlayer --cov-report=term-missing

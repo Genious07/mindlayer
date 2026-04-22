@@ -1,7 +1,7 @@
 """Usage with Gemma LLM extractor (downloads ~800MB model on first run)."""
-import memvault
+import mindlayer
 
-with memvault.MemCore(use_llm=True) as mem:
+with mindlayer.MemCore(use_llm=True) as mem:
     mem.add("""
         Today I had a long conversation with a user named Sam.
         Sam mentioned he is a data scientist working at a startup in San Francisco.

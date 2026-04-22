@@ -1,18 +1,18 @@
-# memvault
+# mindlayer
 
-[![PyPI version](https://img.shields.io/pypi/v/memvault-ai.svg)](https://pypi.org/project/memvault-ai/)
-[![CI](https://github.com/Genious07/memvault/actions/workflows/ci.yml/badge.svg)](https://github.com/Genious07/memvault/actions/workflows/ci.yml)
+[![PyPI version](https://img.shields.io/pypi/v/mindlayer-ai.svg)](https://pypi.org/project/mindlayer-ai/)
+[![CI](https://github.com/Genious07/mindlayer/actions/workflows/ci.yml/badge.svg)](https://github.com/Genious07/mindlayer/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://pypi.org/project/memvault-ai/)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://pypi.org/project/mindlayer-ai/)
 
 Open-source, model-agnostic memory layer for LLMs.
 
-Drop memvault into any LLM application to give it persistent, structured memory — no API key required, no infrastructure to run, no vendor lock-in.
+Drop mindlayer into any LLM application to give it persistent, structured memory — no API key required, no infrastructure to run, no vendor lock-in.
 
 ```python
-import memvault
+import mindlayer
 
-with memvault.MemCore() as mem:
+with mindlayer.MemCore() as mem:
     mem.add("My name is Alice. I prefer dark mode and I work in Python.")
     results = mem.search("programming preferences")
     for r in results:
@@ -21,11 +21,11 @@ with memvault.MemCore() as mem:
 
 ---
 
-## Why memvault?
+## Why mindlayer?
 
 Most LLM apps lose context between sessions. Vector databases are heavy to set up. Existing memory libraries tie you to a specific LLM or cloud service.
 
-memvault is:
+mindlayer is:
 - **Zero config** — SQLite storage, works out of the box
 - **Model agnostic** — plug in any LLM or use the built-in Gemma extractor
 - **Pure library** — no daemon, no background process, no ports
@@ -36,26 +36,26 @@ memvault is:
 ## Installation
 
 ```bash
-pip install memvault-ai
+pip install mindlayer-ai
 ```
 
 With semantic vector search (downloads ~130MB embedding model on first use):
 
 ```bash
-pip install "memvault-ai[vector]"
+pip install "mindlayer-ai[vector]"
 ```
 
 With LLM-powered extraction (downloads Gemma ~800MB on first use):
 
 ```bash
-pip install "memvault-ai[llm]"
+pip install "mindlayer-ai[llm]"
 ```
 
 ---
 
 ## Architecture
 
-memvault uses a **3-layer memory model** inspired by human cognition:
+mindlayer uses a **3-layer memory model** inspired by human cognition:
 
 | Layer | Description | Promoted when |
 |-------|-------------|---------------|
@@ -80,9 +80,9 @@ memvault uses a **3-layer memory model** inspired by human cognition:
 ### Default (rule-based extractor, no LLM needed)
 
 ```python
-import memvault
+import mindlayer
 
-mem = memvault.MemCore()
+mem = mindlayer.MemCore()
 mem.add("I am a Python developer. I love open source.")
 results = mem.search("developer")
 ```
@@ -90,8 +90,8 @@ results = mem.search("developer")
 ### With semantic vector search (best recall)
 
 ```python
-# pip install "memvault[vector]"
-mem = memvault.MemCore(use_vector=True)
+# pip install "mindlayer[vector]"
+mem = mindlayer.MemCore(use_vector=True)
 mem.add("I prefer concise explanations and dislike verbose output.")
 results = mem.search("communication style")  # matches semantically, not just by keyword
 ```
@@ -99,7 +99,7 @@ results = mem.search("communication style")  # matches semantically, not just by
 ### With Gemma LLM extractor (best quality)
 
 ```python
-mem = memvault.MemCore(use_llm=True)
+mem = mindlayer.MemCore(use_llm=True)
 # Downloads gemma-3-1b-it-Q4_K_M.gguf (~800MB) on first run
 mem.add("Long conversation text with lots of context...")
 ```
@@ -107,26 +107,26 @@ mem.add("Long conversation text with lots of context...")
 ### Bring your own LLM extractor
 
 ```python
-from memvault.extractors.base import BaseExtractor
+from mindlayer.extractors.base import BaseExtractor
 
 class MyExtractor(BaseExtractor):
     def extract(self, text: str) -> list[str]:
         # call OpenAI, Anthropic, Ollama, anything
         return ["fact 1", "fact 2"]
 
-mem = memvault.MemCore(extractor=MyExtractor())
+mem = mindlayer.MemCore(extractor=MyExtractor())
 ```
 
 ### Custom storage backend
 
 ```python
-from memvault.storage.base import BaseStorage
+from mindlayer.storage.base import BaseStorage
 
 class PostgresStorage(BaseStorage):
     # implement the interface
     ...
 
-mem = memvault.MemCore(storage=PostgresStorage())
+mem = mindlayer.MemCore(storage=PostgresStorage())
 ```
 
 ### Memory maintenance
@@ -154,8 +154,8 @@ mem.decay()         # decay and prune stale memories
 Contributions are welcome. Please open an issue before submitting large PRs.
 
 ```bash
-git clone https://github.com/Genious07/memvault
-cd memvault
+git clone https://github.com/Genious07/mindlayer
+cd mindlayer
 pip install -e ".[dev,vector]"
 pytest
 ```

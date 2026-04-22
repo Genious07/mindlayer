@@ -17,7 +17,7 @@ def _deserialize(b: bytes) -> List[float]:
 
 
 class SQLiteStorage(BaseStorage):
-    def __init__(self, db_path: str = "memvault.db", embedding_dim: Optional[int] = None):
+    def __init__(self, db_path: str = "mindlayer.db", embedding_dim: Optional[int] = None):
         self.db_path = db_path
         self.embedding_dim = embedding_dim
         self._conn = sqlite3.connect(db_path, check_same_thread=False)

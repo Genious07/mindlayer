@@ -1,7 +1,7 @@
 """Basic usage — no API key, no setup required."""
-import memvault
+import mindlayer
 
-with memvault.MemCore() as mem:
+with mindlayer.MemCore() as mem:
     # Add memories from conversation text
     mem.add("My name is Alice. I prefer dark mode and I use VSCode.")
     mem.add("I am a backend developer. I work in Python and Go.")

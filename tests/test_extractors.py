@@ -1,4 +1,4 @@
-from memvault.extractors.rules import RulesExtractor
+from mindlayer.extractors.rules import RulesExtractor
 
 
 def test_extract_name():
