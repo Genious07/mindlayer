@@ -1,7 +1,7 @@
 # memcore
 
 [![PyPI version](https://img.shields.io/pypi/v/memcore-ai.svg)](https://pypi.org/project/memcore-ai/)
-[![CI](https://github.com/Genious07/memcore/actions/workflows/ci.yml/badge.svg)](https://github.com/Genious07/memcore/actions/workflows/ci.yml)
+[![CI](https://github.com/Genious07/memcore-ai/actions/workflows/ci.yml/badge.svg)](https://github.com/Genious07/memcore-ai/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9+-blue.svg)](https://pypi.org/project/memcore-ai/)
 
@@ -154,7 +154,7 @@ mem.decay()         # decay and prune stale memories
 Contributions are welcome. Please open an issue before submitting large PRs.
 
 ```bash
-git clone https://github.com/Genious07/memcore
+git clone https://github.com/Genious07/memcore-ai
 cd memcore
 pip install -e ".[dev,vector]"
 pytest

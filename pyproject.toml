@@ -41,9 +41,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/Genious07/memcore"
-Repository = "https://github.com/Genious07/memcore"
-Issues = "https://github.com/Genious07/memcore/issues"
+Homepage = "https://github.com/Genious07/memcore-ai"
+Repository = "https://github.com/Genious07/memcore-ai"
+Issues = "https://github.com/Genious07/memcore-ai/issues"
 
 [tool.setuptools.packages.find]
 where = ["."]
